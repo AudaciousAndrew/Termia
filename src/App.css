@@ -1,0 +1,160 @@
+:root{
+  --lightBlue:#61dafb;
+  --mainDark:#20232a;
+  --mainWhite:#ffffff;
+}
+
+html {
+  font-family: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  padding-top: 50px;
+  min-width: 270px;
+}
+
+.navbar {
+ min-height: 50px;
+ background: var(--mainDark);
+ font-size: 1.2rem;
+}
+
+.navbar-brand {
+ padding: 0 15px;
+ height: 50px;
+ line-height: 50px;
+ color: var(--lightBlue) !important;
+ font-family: 'PT Serif', serif;
+}
+
+.navbar-toggle {
+ /* (80px - button height 34px) / 2 = 23px */
+ margin-top: 8px;
+ padding: 9px 10px !important;
+}
+
+.link:hover{
+  color: var(--lightBlue) !important;
+}
+
+.cart{
+  font-size: 1.3rem;
+  color: var(--mainWhite) !important;
+}
+
+.cart-active{
+  color: var(--lightBlue) !important;
+}
+
+.search-icon{
+  color: var(--mainWhite);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.search-box{
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: 0;
+  border-radius: 4%;
+  color: var(--mainWhite);
+  outline: none;
+  width: 65%;
+}
+
+.search-box:focus{
+  background-color: #373940;
+}
+
+.search-box::-webkit-search-cancel-button{
+  cursor: pointer;
+}
+
+@media (min-width: 576px) {
+
+ .navbar-nav > li > a {
+   /* (80px - line-height of 27px) / 2 = 26.5px */
+   padding-top: 15px;
+   padding-bottom: 15px;
+   line-height: 20px;
+ }
+
+ .link-active {
+   color: var(--lightBlue) !important;
+   box-shadow: 0px -3px 0px var(--lightBlue) inset;
+ }
+
+}
+
+@media (max-width:575px){
+  body{
+    padding-top: 95px;
+  }
+
+}
+
+
+@media (max-width: 768px){
+
+
+  .navbar .navbar-brand{
+    margin-left: 1rem !important;
+    margin-top: 0.5rem;
+  }
+
+  .navbar-toggler {
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #navbarCollapse {
+    margin-left: 1rem !important;
+  }
+
+  .search-container {
+    margin-left: 1rem;
+    width: 70%;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-container .search-box {
+    margin-right: 0px !important;
+    width: 70%;
+  }
+
+  .cart-container {
+    margin-bottom: 0.5rem;
+  }
+
+  .cart-container .cart{
+    margin-right: 1rem !important;
+  }
+
+}
+
+.product-list {
+  background-color: gray;
+}
+
+.filter-bar{
+  background-color: orange;
+  /* height: 400px; */
+}
+
+.footer{
+  background-color: var(--mainDark);
+  height: 100px;
+}
+
+.btn-filter{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.btn-filter:focus{
+  outline: none;
+}

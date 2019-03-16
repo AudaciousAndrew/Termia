@@ -54,7 +54,7 @@ export default class Products extends Component {
                     }}
                  </ProductConsumer>
               </div>
-              <div className="pagination-container mb-3">
+              <div className="pagination-container mb-5">
                 <div className="pagination-sort text-capitalize">
                   <form action="">
                     <label htmlFor="select-sort" className="pagination-label">

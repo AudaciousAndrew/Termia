@@ -15,6 +15,10 @@ body {
   color: var(--mainDark);
 }
 
+#map {
+  height: 550px;
+}
+
 
 @media (min-width: 576px) {
 
@@ -76,10 +80,4 @@ body {
     margin-right: 1rem !important;
   }
 
-}
-
-
-
-.product-list {
-  /* background-color: gray; */
 }

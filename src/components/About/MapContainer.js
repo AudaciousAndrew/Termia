@@ -1,63 +1,62 @@
 import React , {Component} from 'react'
-import { Map , GoogleApiWrapper , InfoWindow , Marker } from 'google-maps-react'
 
-const mapStyles = {
-  width: '87vw' ,
-  height: '60vh' ,
-}
+export default class MapContainer2 extends Component {
 
-export  class MapContainer extends Component {
   state = {
-    showingInfoWindow: false,  //Hides or the shows the infoWindow
-    activeMarker: {},          //Shows the active marker upon click
-    selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
+    coords:  {lat: 59.972211, lng: 30.302165} ,
+    mapType: "hybrid" ,
+    mapZoom: 15 ,
   }
 
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    })
+  componentDidMount() {
+    this.renderMap()
+  }
 
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      })
-    }
+  renderMap = () => {
+    loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyC67tbr70b-iNlTb66lmivo9bp3_Qx2Qsw&callback=initMap&language=en")
+    window.initMap = this.initMap
+  }
+
+  initMap = () => {
+    const infoWindow = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h1 id="firstHeading" class="firstHeading">Termia</h1>'+
+              '<div id="bodyContent">'+
+              '<p><b>Address:</b>St.Petersburg Vyazemsky 5/7</p>'+
+              '</div>'+
+              '</div>';
+
+    var map = new window.google.maps.Map(document.getElementById('map'), {
+      center: this.state.coords,
+      zoom: this.state.mapZoom ,
+      mapTypeId: this.state.mapType
+    })
+    var infowindow = new window.google.maps.InfoWindow({
+            content: infoWindow
+    })
+    var marker = new window.google.maps.Marker({
+         position: this.state.coords ,
+         map: map,
+         title: 'Termia office'
+    })
+    marker.addListener('click', function() {
+          infowindow.open(map, marker);
+    })
   }
 
   render(){
     return(
-        <Map
-          google={this.props.google}
-          zoom={17}
-          style={mapStyles}
-          initialCenter={{
-           lat: 59.972211,
-           lng: 30.302165
-          }}
-        >
-        <Marker
-          onClick={this.onMarkerClick}
-          name={'Kenyatta International Convention Centre'}
-        />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-        <div>
-          <h4>{this.state.selectedPlace.name}</h4>
-        </div>
-        </InfoWindow>
-        </Map>
+      <div id="map"></div>
     )
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyC67tbr70b-iNlTb66lmivo9bp3_Qx2Qsw'
-})(MapContainer);
+function loadScript(url){
+  var index = window.document.getElementsByTagName("script")[0]
+  var script = window.document.createElement("script")
+  script.src = url
+  script.async = true
+  script.defer = true
+  index.parentNode.insertBefore(script , index)
+}

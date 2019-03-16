@@ -3,14 +3,13 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { ProductConsumer } from '../context'
 
-export default class Product extends Component {
+export default class ProductItem extends Component {
   render(){
     const { id , name , price , img , inCart} = this.props.product
     return(
-      <ProductWrapper className="col-9 mx-auto col-sm-6 col-md-4 col-lg-3 my-3">
+      <ProductWrapper className="col-10 col-sm-7 col-md-5 col-lg-4 pl-3 mb-3 px-0">
         <div className="card">
-          <div>
-            <div className="img-container p-5">
+            <div className="img-container p-1">
               <Link to="/details">
                 <img src={img} alt="product" className="card-img-top"/>
               </Link>
@@ -18,13 +17,11 @@ export default class Product extends Component {
                  {inCart?(<p className="text-capitalize mb-0" disabled>in cart</p>):(<i className="fas fa-cart-plus"></i>)}
                </button>
             </div>
-
-          </div>
-          <div className="card-footer d-flex justify-content-between">
-            <p className="align-self-center mb-0">{name}</p>
-            <h5 className="text-blue font-italic mb-0">
-              <span className="mr-1">$</span>{price}
-            </h5>
+          <div className="card-footer p-1">
+            <Link to="/details" className="title-link">
+              <p className="align-self-center mb-0 item-title">{name}</p>
+              <p className="item-price pt-2 m-0">${price}</p>
+            </Link>
           </div>
         </div>
       </ProductWrapper>
@@ -34,6 +31,27 @@ export default class Product extends Component {
 }
 
 const ProductWrapper = styled.div`
+
+.title-link{
+  text-decoration:none;
+}
+
+.item-price{
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #000;
+  font-weight: 600;
+}
+
+.item-title{
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #000;
+  font-weight: 600;
+}
+
 .card{
   border-color:transparent;
   transition:all 1s linear;
@@ -41,7 +59,7 @@ const ProductWrapper = styled.div`
 .card-footer{
   background:transparent;
   border-top:transparent;
-  transition:all 1s linear;
+  transition:all 0.5s linear;
 }
 &:hover{
   .card{
@@ -57,10 +75,10 @@ const ProductWrapper = styled.div`
   overflow:hidden;
 }
 .card-img-top{
-  transition:all 1s linear;
+  transition:all 0.5s linear;
 }
-.img-container:hover .card-img-top{
-  transform:scale(1.2);
+.card:hover .card-img-top{
+  transform:scale(1.1);
 }
 .cart-btn{
   position:absolute;
@@ -73,9 +91,9 @@ const ProductWrapper = styled.div`
   font-size:1.4rem;
   border-radius:0.5rem 0 0 0;
   transform: translate(100% , 100%);
-  transition:all 1s linear;
+  transition:all 0.5s linear;
 }
-.img-container:hover .cart-btn{
+.card:hover .cart-btn{
   transform:translate(0,0);
 }
 .cart-btn:hover{

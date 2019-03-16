@@ -1,6 +1,7 @@
 :root{
   --lightBlue:#61dafb;
-  --mainDark:#20232a;
+  /* --mainDark:#20232a; */
+  --mainDark:#000;
   --mainWhite:#ffffff;
 }
 
@@ -11,64 +12,9 @@ html {
 body {
   padding-top: 50px;
   min-width: 270px;
+  color: var(--mainDark);
 }
 
-.navbar {
- min-height: 50px;
- background: var(--mainDark);
- font-size: 1.2rem;
-}
-
-.navbar-brand {
- padding: 0 15px;
- height: 50px;
- line-height: 50px;
- color: var(--lightBlue) !important;
- font-family: 'PT Serif', serif;
-}
-
-.navbar-toggle {
- /* (80px - button height 34px) / 2 = 23px */
- margin-top: 8px;
- padding: 9px 10px !important;
-}
-
-.link:hover{
-  color: var(--lightBlue) !important;
-}
-
-.cart{
-  font-size: 1.3rem;
-  color: var(--mainWhite) !important;
-}
-
-.cart-active{
-  color: var(--lightBlue) !important;
-}
-
-.search-icon{
-  color: var(--mainWhite);
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-
-.search-box{
-  font-size: 1.1rem;
-  background-color: transparent;
-  border: 0;
-  border-radius: 4%;
-  color: var(--mainWhite);
-  outline: none;
-  width: 65%;
-}
-
-.search-box:focus{
-  background-color: #373940;
-}
-
-.search-box::-webkit-search-cancel-button{
-  cursor: pointer;
-}
 
 @media (min-width: 576px) {
 
@@ -95,7 +41,6 @@ body {
 
 
 @media (max-width: 768px){
-
 
   .navbar .navbar-brand{
     margin-left: 1rem !important;
@@ -133,28 +78,8 @@ body {
 
 }
 
+
+
 .product-list {
-  background-color: gray;
-}
-
-.filter-bar{
-  background-color: orange;
-  /* height: 400px; */
-}
-
-.footer{
-  background-color: var(--mainDark);
-  height: 100px;
-}
-
-.btn-filter{
-  background-color: transparent;
-  border: none;
-  outline: none;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.btn-filter:focus{
-  outline: none;
+  /* background-color: gray; */
 }

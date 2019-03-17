@@ -21,7 +21,7 @@ export default class MapContainer2 extends Component {
     const infoWindow = '<div id="content">'+
               '<div id="siteNotice">'+
               '</div>'+
-              '<h1 id="firstHeading" class="firstHeading">Termia</h1>'+
+              '<h1 id="firstHeading" class="firstHeading">Termia office</h1>'+
               '<div id="bodyContent">'+
               '<p><b>Address:</b>St.Petersburg Vyazemsky 5/7</p>'+
               '</div>'+

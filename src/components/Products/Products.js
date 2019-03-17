@@ -1,8 +1,8 @@
 import React , {Component} from 'react'
 import styled from 'styled-components';
 import ProductItem from './ProductItem'
-import FilterBar from './Filter/FilterBar'
-import { ProductConsumer } from '../context'
+import FilterBar from '../Filter/FilterBar'
+import { ProductConsumer } from '../../context'
 import { Link } from 'react-router-dom'
 
 export default class Products extends Component {

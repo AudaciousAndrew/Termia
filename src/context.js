@@ -1,12 +1,13 @@
 import React , {Component} from 'react'
-import { testData } from './testdata'
+import { testData , detailProduct } from './testdata'
 
 const ProductContext = React.createContext()
 
 export default class ProductProvider extends Component {
 
   state = {
-    products: testData
+    products: testData ,
+    detailProduct : detailProduct
   }
 
   render(){

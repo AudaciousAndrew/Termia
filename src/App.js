@@ -6,9 +6,10 @@ import Navbar from './components/Navbar'
 import Products from './components/Products/Products'
 import Footer from './components/Footer'
 import Cart from './components/Cart'
-import About from './components/About/About';
-import MainPage from './components/MainPage';
-import Delivery from './components/Delivery';
+import About from './components/About/About'
+import MainPage from './components/MainPage'
+import Delivery from './components/Delivery'
+import Details from './components/Products/Details'
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route path="/about" component={About} />
           <Route path="/cart" component={Cart} />
           <Route path="/delivery" component={Delivery} />
+          <Route path="/details" component={Details} />
         </Switch>
         <Footer />
       </div>

@@ -10,9 +10,8 @@ export default class FilterBar extends Component {
     availBtn:true
   }
 
-  handleButtonStates = (event , prevState) => {
+  handleButtonStates = (event) => {
     const { name  } = event.target
-    console.log("hi from" , name );
     this.setState(prevState => {
         return {[name] : !prevState[name]}
     })

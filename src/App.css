@@ -15,6 +15,10 @@ body {
   color: var(--mainDark);
 }
 
+i {
+  pointer-events: none !important;
+}
+
 #map {
   height: 550px;
 }

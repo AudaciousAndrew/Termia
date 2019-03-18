@@ -116,6 +116,7 @@ const AboutWrapper = styled.div`
 
 .about-card-img{
   height: 45vh;
+  object-fit:cover;
 }
 
 .about-card-title{

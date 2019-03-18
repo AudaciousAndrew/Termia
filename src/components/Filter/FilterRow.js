@@ -8,7 +8,7 @@ export default function FilterRow (props){
        <label className="label-filter row-text text-capitalize" htmlFor={props.id}>{props.text}</label>
        <button id={props.id} className="btn-filter" type="button" data-toggle="collapse" data-target={props.target}
         name={props.name}  onClick={props.buttonHandler}>
-         { props.btnValue ?  "-"  :  "+" }
+         { props.btnValue ?  <i className="fas fa-caret-up"></i>  : <i className="fas fa-caret-down"></i> }
        </button>
      </div>
    </FilterRowWrapper>
@@ -16,6 +16,11 @@ export default function FilterRow (props){
 }
 
 const FilterRowWrapper = styled.div`
+
+  .label-filter{
+    cursor:pointer;
+  }
+
   .row-text {
     color: var(--mainDark) !important;
     font-size: 18px !important;

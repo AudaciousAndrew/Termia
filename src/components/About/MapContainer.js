@@ -1,6 +1,6 @@
 import React , {Component} from 'react'
 
-export default class MapContainer2 extends Component {
+export default class MapContainer extends Component {
 
   state = {
     coords:  {lat: 59.972211, lng: 30.302165} ,

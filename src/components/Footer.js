@@ -1,5 +1,4 @@
 import React from 'react'
-import { ProductConsumer } from '../context'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -9,8 +8,8 @@ export default function Footer (){
     <div className="container-fluid footer">
       <div className="pt-3">
         <ul className="text-capitalize footer-list pr-5 pl-0">
-          <li className="footer-item p-0"><Link className="footer-link" to="/">main</Link></li>
-          <li className="footer-item"><Link className="footer-link" to="/products">products</Link></li>
+          <li className="footer-item p-0"><Link className="footer-link" to="/#pageStart">main</Link></li>
+          <li className="footer-item"><Link className="footer-link" to="/products#pageStart">products</Link></li>
         </ul>
         <ul className="text-capitalize footer-list px-0">
           <li className="footer-item"><Link className="footer-link" to="/about">about us</Link></li>
@@ -32,6 +31,12 @@ export default function Footer (){
 }
 
 const FooterWrapper = styled.div`
+
+.anchor{
+  position:relative;
+  top:0;
+  left:0;
+}
 
 .footer-support{
   float:right;

@@ -1,6 +1,8 @@
 import React , {Component} from 'react'
 import styled from 'styled-components'
 
+// TODO: fix carets function
+
 export default class Delivery extends Component {
   state = {
     btnScheme: true ,
@@ -14,7 +16,7 @@ export default class Delivery extends Component {
 
   handleButtonStates = (event) => {
     const { id } = event.target
-    if(this.state.prevID == id)
+    if(this.state.prevID === id)
       this.setState(prevState => ({
           [id] : !prevState[id]
       }))

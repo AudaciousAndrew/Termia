@@ -6,7 +6,7 @@ import styled from 'styled-components'
 export default function Navbar (){
 
  return (
-   <NavbarWrapper>
+   <NavbarWrapper id="pageStart">
       <nav className="navbar navbar-expand-sm navbar-dark fixed-top">
         <Link to="/" className="navbar-brand text-capitalize p-0 h-100">
           <img src="img/logo3.png" alt="logo" height="40px" width="40px"/>

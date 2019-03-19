@@ -38,14 +38,14 @@ export default class FilterBar extends Component {
                             buttonHandler={this.handleButtonStates} target="#collapseType" name="typeBtn"/>
                 <div className="show" id="collapseType">
                   <div className="card card-body border-0 p-1 py-2">
-                    <label className="text-capitalize"><input type="checkbox" />aer heating units</label>
-                    <label className="text-capitalize"><input type="checkbox" />electric convectors</label>
-                    <label className="text-capitalize"><input type="checkbox" />electric boilers</label>
-                    <label className="text-capitalize"><input type="checkbox" />oil filled electric radiators</label>
-                    <label className="text-capitalize"><input type="checkbox" />infrared heater</label>
-                    <label className="text-capitalize"><input type="checkbox" />plinth convectors</label>
-                    <label className="text-capitalize"><input type="checkbox" />heating radiators</label>
-                    <label className="text-capitalize"><input type="checkbox" />electric tiles</label>
+                    <label className="text-capitalize"><input type="checkbox" />jacket & coats</label>
+                    <label className="text-capitalize"><input type="checkbox" />dresses</label>
+                    <label className="text-capitalize"><input type="checkbox" />hoodies & sweatshirts</label>
+                    <label className="text-capitalize"><input type="checkbox" />tops</label>
+                    <label className="text-capitalize"><input type="checkbox" />kneatwear</label>
+                    <label className="text-capitalize"><input type="checkbox" />jeans</label>
+                    <label className="text-capitalize"><input type="checkbox" />skirts</label>
+                    <label className="text-capitalize"><input type="checkbox" />playsuits & jumpsuits</label>
                   </div>
                 </div>
               </div>

@@ -16,19 +16,18 @@ export default class Delivery extends Component {
 
   handleButtonStates = (event) => {
     const { id } = event.target
-    if(this.state.prevID === id)
+    if(this.state[this.state.prevID] === false){
       this.setState(prevState => ({
-          [id] : !prevState[id]
+        [id] : !prevState[id] ,
+        prevID: id
       }))
-    else {
+    } else {
       this.setState(prevState => ({
-          [id] : !prevState[id] ,
-          prevID : id ,
-          [this.state.prevID] : !prevState[this.state.prevID]
+        [id] : !prevState[id] ,
+        prevID: id ,
+        [this.state.prevID] : !prevState[this.state.prevID]
       }))
     }
-
-
   }
 
   render(){

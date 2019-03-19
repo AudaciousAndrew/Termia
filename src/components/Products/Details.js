@@ -8,7 +8,7 @@ export default class Details extends Component {
     return(
       <ProductConsumer>
         {(value) => {
-          const { id , img , name , price , description , available , details} = value.detailProduct
+          const { id , img , name , price , description , available , details , inCart} = value.detailProduct
           console.log(value.detailProduct);
           return (
             <DetailsWrapper>
@@ -16,6 +16,9 @@ export default class Details extends Component {
               <div className="row">
                 <div className="col-5 img-container p-2">
                   <img src={img} alt="product image" className="img-zoom"/>
+                  <Link to="/products">
+                    <button className="btn variation-btn w-100 mt-2">back to shoping</button>
+                  </Link>
                 </div>
                 <div className="col-7">
                   <div className="product-title mb-3">
@@ -32,7 +35,7 @@ export default class Details extends Component {
                           <input className="qty-box ml-2 mr-0" type="text" id="qtyBox" placeholder="1" maxLength="2" size="2"/>
                         </div>
                       </div>
-                      <div className="col-4">
+                      <div className="col-4 pr-0">
                         <div className="variation-dropdowns mb-2">
                           <div className="select-size mb-1">
                             <label className="variation-label" htmlFor="sizeBox">Size:</label>
@@ -54,30 +57,34 @@ export default class Details extends Component {
                             </select>
                           </div>
                         </div>
-                        <div className="variation-btn">
-                        <button className="btn variation-btn">buy now</button>
-                        </div>
                       </div>
                     </div>
+                  </div>
+                  <div className="variation-buttons col-6 p-0">
+                    <button className="btn variation-btn mr-0 ml-auto d-block"
+                            disabled={inCart?true:false} onClick={() => { value.addToCart(id) }}
+                    >
+                      {inCart?"in cart" : "buy now"}
+                    </button>
                   </div>
                   <div className="available-box">
                     <p>Available:{available?"in stock":"absent"}</p>
                   </div>
-                  <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <a class="nav-item nav-link active" id="nav-desc-tab" data-toggle="tab" href="#nav-desc" role="tab" aria-controls="nav-desc" aria-selected="true">Description</a>
-                      <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">Product Details</a>
-                      <a class="nav-item nav-link" id="nav-return-tab" data-toggle="tab" href="#nav-return" role="tab" aria-controls="nav-return" aria-selected="false">Return</a>
+                  <nav className="desc-tabs">
+                    <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                      <a className="nav-item nav-link active" id="nav-desc-tab" data-toggle="tab" href="#nav-desc" role="tab" aria-controls="nav-desc" aria-selected="true">Description</a>
+                      <a className="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">Product Details</a>
+                      <a className="nav-item nav-link" id="nav-return-tab" data-toggle="tab" href="#nav-return" role="tab" aria-controls="nav-return" aria-selected="false">Return</a>
                     </div>
                   </nav>
-                  <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-desc" role="tabpanel" aria-labelledby="nav-desc-tab">
+                  <div className="tab-content" id="nav-tabContent">
+                    <div className="tab-pane fade show active" id="nav-desc" role="tabpanel" aria-labelledby="nav-desc-tab">
                       {description}
                     </div>
-                    <div class="tab-pane fade" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+                    <div className="tab-pane fade" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
                       {details}
                     </div>
-                    <div class="tab-pane fade" id="nav-return" role="tabpanel" aria-labelledby="nav-return-tab">
+                    <div className="tab-pane fade" id="nav-return" role="tabpanel" aria-labelledby="nav-return-tab">
 
                     </div>
                   </div>
@@ -94,12 +101,16 @@ export default class Details extends Component {
 
 const DetailsWrapper = styled.div`
 
+.tab-content{
+  overflow:auto;
+  max-height:400px;
+}
+
 .nav-link{
   color:#000;
 }
 
 .variation-btn{
-  float:right;
   text-transform:capitalize;
   background-color:#000;
   color:#fff;
@@ -154,7 +165,7 @@ const DetailsWrapper = styled.div`
 }
 
 .img-container{
-  border: 1px solid #ccc;
+  display:inline-block;
 }
 
 .img-zoom{

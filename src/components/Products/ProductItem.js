@@ -8,22 +8,27 @@ export default class ProductItem extends Component {
     const { id , name , price , img , inCart} = this.props.product
     return(
       <ProductWrapper className="col-10 col-sm-7 col-md-5 col-lg-4 pl-3 mb-3 px-0">
-        <div className="card h-100">
-            <div className="img-container p-1">
-              <Link to="/details">
-                <img src={img} alt="product" className="card-img-top"/>
-              </Link>
-              <button className="cart-btn" disabled={inCart} onClick={() =>{ console.log("hi")}}>
-                 {inCart?(<p className="text-capitalize mb-0" disabled>in cart</p>):(<i className="fas fa-cart-plus"></i>)}
-               </button>
+        <ProductConsumer>
+          {(value) => (
+            <div className="card h-100" onClick={() =>  value.handleDetail(id)} >
+                <div className="img-container p-1">
+                  <Link to="/details">
+                    <img src={img} alt="product" className="card-img-top"/>
+                  </Link>
+                  <button className="cart-btn" disabled={inCart ? true : false} onClick={() => {value.addToCart(id)}}>
+                     {inCart?(<p className="text-capitalize mb-0" disabled>in cart</p>):(<i className="fas fa-cart-plus"></i>)}
+                   </button>
+                </div>
+              <div className="card-footer p-1">
+                <Link to="/details" className="title-link">
+                  <p className="align-self-center mb-0 item-title">{name}</p>
+                  <p className="item-price pt-2 m-0">${price}</p>
+                </Link>
+              </div>
             </div>
-          <div className="card-footer p-1">
-            <Link to="/details" className="title-link">
-              <p className="align-self-center mb-0 item-title">{name}</p>
-              <p className="item-price pt-2 m-0">${price}</p>
-            </Link>
-          </div>
-        </div>
+          )}
+
+        </ProductConsumer>
       </ProductWrapper>
 
     )
@@ -83,7 +88,7 @@ const ProductWrapper = styled.div`
   bottom:0;
   right:0;
   padding:0.2rem 0.4rem;
-  background:var(--lightBlue);
+  background:var(--mainDark);
   border:none;
   color:var(--mainWhite);
   font-size:1.4rem;

@@ -10,6 +10,7 @@ import About from './components/About/About'
 import MainPage from './components/MainPage'
 import Delivery from './components/Delivery'
 import Details from './components/Products/Details'
+import Default from './components/Default';
 
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/cart" component={Cart} />
           <Route path="/delivery" component={Delivery} />
           <Route path="/details" component={Details} />
+          <Route component={Default} />
         </Switch>
         <Footer />
       </div>

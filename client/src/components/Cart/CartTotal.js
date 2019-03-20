@@ -10,8 +10,13 @@ export default function CartTotal ({value}){
         <div className="col-2 offset-8 text-center">
           basket subtotal:
         </div>
-        <div className="col-2">
+        <div className="col-1">
           ${cartTotal}
+        </div>
+        <div className="col-1">
+          <Link to="/">
+            <button className="order-btn btn text-capitalize">order</button>
+          </Link>
         </div>
       </div>
       <div className="row">
@@ -27,6 +32,20 @@ export default function CartTotal ({value}){
 
 const CartTotalWrapper = styled.div`
 
+.order-btn:hover{
+  background-color:#222;
+}
+
+.order-btn{
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 1.2;
+  color: #fff;
+  font-weight: 600;
+  background-color:#000;
+  border-radius:0 !important;
+}
+
 .cart-footer-text{
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   font-size: 16px;
@@ -35,7 +54,7 @@ const CartTotalWrapper = styled.div`
   font-weight: 600;
 }
 
-.bck-button:focus{
+.btn:focus{
   outline:none;
   box-shadow:none;
 }

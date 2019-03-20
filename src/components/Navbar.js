@@ -1,42 +1,50 @@
-import React from 'react'
+import React , {Component} from 'react'
 import { Link , NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { ProductConsumer } from "../context"
 
+export default class Navbar extends Component {
+  render(){
+    return (
+      <NavbarWrapper>
+        <ProductConsumer>
+        {(value) => {
+          return (
+            <nav className="navbar navbar-expand-sm navbar-dark fixed-top">
+              <Link to="/" className="navbar-brand text-capitalize p-0 h-100">
+                <img src="img/logo3.png" alt="logo" height="40px" width="40px"/>
+                <span className="ml-3">termia</span>
+              </Link>
+              <button className="navbar-toggler ml-auto" data-toggle="collapse" data-target="#navbarCollapse">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse ml-5" id="navbarCollapse">
+                <ul className="navbar-nav text-capitalize">
+                  <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"><NavLink to="/" exact className="nav-link link" activeClassName="link-active">main</NavLink></li>
+                  <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"><NavLink to="/products" className="nav-link link" activeClassName="link-active">products</NavLink></li>
+                  <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"><NavLink to="/about" className="nav-link link" activeClassName="link-active">about&nbsp;us</NavLink></li>
+                  <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"><NavLink to="/delivery" className="nav-link link" activeClassName="link-active">delivery</NavLink></li>
+                </ul>
+              </div>
+              <div className="search-container">
+                <i className="fas fa-search search-icon" aria-hidden="true" onClick={() => {
+                  console.log("HI add search functionality");
+                }}></i>
+                <input className="search-box ml-1 mr-2 px-1" type="search" placeholder="Search products" aria-label="Search"/>
+              </div>
+              <div className="cart-container">
+              <NavLink to="/cart" className="cart ml-auto" activeClassName="cart-active">
+                <i className="fas fa-shopping-cart">({value.cart.length})</i>
+              </NavLink>
+              </div>
+            </nav>
+          )
+        }}
 
-export default function Navbar (){
-
- return (
-   <NavbarWrapper>
-      <nav className="navbar navbar-expand-sm navbar-dark fixed-top">
-        <Link to="/" className="navbar-brand text-capitalize p-0 h-100">
-          <img src="img/logo3.png" alt="logo" height="40px" width="40px"/>
-          <span className="ml-3">termia</span>
-        </Link>
-        <button className="navbar-toggler ml-auto" data-toggle="collapse" data-target="#navbarCollapse">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse ml-5" id="navbarCollapse">
-          <ul className="navbar-nav text-capitalize">
-            <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"><NavLink to="/" exact className="nav-link link" activeClassName="link-active">main</NavLink></li>
-            <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"><NavLink to="/products" className="nav-link link" activeClassName="link-active">products</NavLink></li>
-            <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"><NavLink to="/about" className="nav-link link" activeClassName="link-active">about&nbsp;us</NavLink></li>
-            <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"><NavLink to="/delivery" className="nav-link link" activeClassName="link-active">delivery</NavLink></li>
-          </ul>
-        </div>
-        <div className="search-container">
-          <i className="fas fa-search search-icon" aria-hidden="true" onClick={() => {
-            console.log("HI add search functionality");
-          }}></i>
-          <input className="search-box ml-1 mr-2 px-1" type="search" placeholder="Search products" aria-label="Search"/>
-        </div>
-        <div className="cart-container">
-        <NavLink to="/cart" className="cart ml-auto" activeClassName="cart-active">
-          <i className="fas fa-shopping-cart">(0)</i>
-        </NavLink>
-        </div>
-      </nav>
-    </NavbarWrapper>
-  )
+       </ProductConsumer>
+     </NavbarWrapper>
+     )
+  }
 }
 
 const NavbarWrapper = styled.div`

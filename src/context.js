@@ -8,7 +8,8 @@ export default class ProductProvider extends Component {
   state = {
     products: [] ,
     detailProduct : detailProduct ,
-    cart:[]
+    cart: [] ,
+    cartTotal:0
   }
 
   componentDidMount() {
@@ -48,7 +49,67 @@ export default class ProductProvider extends Component {
     product.total = price
     this.setState(() => {
       return {products:tempProducts , cart:[...this.state.cart , product]}
-    } , () => {console.log(this.state)})
+    } , () => {this.addTotal()})
+  }
+
+  increment = (id) => {
+    let tempCart = [...this.state.cart]
+    const selectedProduct = tempCart.find(item => item.id === id)
+    const index = tempCart.indexOf(selectedProduct)
+    const product = tempCart[index]
+    product.count = product.count + 1
+    product.total = product.count * product.price
+    this.setState(() => {
+      return {
+        cart : [...tempCart]
+      }
+    } , () => {
+      this.addTotal()
+    })
+  }
+
+  decrement = (id) => {
+    let tempCart = [...this.state.cart]
+    const selectedProduct = tempCart.find(item => item.id === id)
+    const index = tempCart.indexOf(selectedProduct)
+    const product = tempCart[index]
+    product.count = product.count - 1
+    if(product.count === 0 )this.removeItem(id)
+    else {
+      product.total =  product.count * product.price
+      this.setState(() => {
+        return {
+          cart : [...tempCart]
+        }
+      } , () => {
+        this.addTotal()
+      })
+    }
+  }
+
+  removeItem = (id) => {
+    let tempProducts = [...this.state.products]
+    let tempCart = [...this.state.cart]
+    tempCart = tempCart.filter(item => item.id !== id)
+    const index = tempProducts.indexOf(this.getItem(id))
+    let removedProduct = tempProducts[index]
+    removedProduct.inCart = false
+    removedProduct.count = 0
+    removedProduct.total = 0
+    this.setState(() => {
+      return {
+        cart : [...tempCart] ,
+        products : [...tempProducts]
+      }
+    } , () => {
+      this.addTotal()
+    })
+  }
+
+  addTotal = () => {
+    let subTotal = 0;
+    this.state.cart.map(item => (subTotal += item.total))
+    this.setState({ cartTotal : subTotal })
   }
 
   render(){
@@ -57,7 +118,10 @@ export default class ProductProvider extends Component {
         value ={{
           ...this.state ,
           addToCart: this.addToCart ,
-          handleDetail: this.handleDetail
+          handleDetail: this.handleDetail ,
+          increment: this.increment ,
+          decrement: this.decrement ,
+          removeItem: this.removeItem
       }}>
         {this.props.children}
       </ProductContext.Provider>

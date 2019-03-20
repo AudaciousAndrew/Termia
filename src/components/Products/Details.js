@@ -15,7 +15,7 @@ export default class Details extends Component {
             <div className="container-fluid padding-container my-4">
               <div className="row">
                 <div className="col-5 img-container p-2">
-                  <img src={img} alt="product image" className="img-zoom"/>
+                  <img src={img} alt="product" className="img-zoom"/>
                   <Link to="/products">
                     <button className="btn variation-btn w-100 mt-2">back to shoping</button>
                   </Link>

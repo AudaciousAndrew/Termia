@@ -9,72 +9,79 @@ export default class Products extends Component {
   render(){
     return(
       <ProductsWrapper>
-        <div className="cointainer mt-4 products-container">
-          <div className="row">
-            <FilterBar />
-            <div className="col-lg-9 col-md-8 col-sm-7 px-0 product-list">
-              <div className="img-container mb-2">
-                <img width="100%" height="168px" src="img/testbanner.jpg" alt="fabric"/>
-              </div>
-              <div className="title-container text-capitalize mb-2">
-                  <h1 className="title-text">our products</h1>
-                  <p className="title-results">1107 results</p>
-              </div>
-              <div className="description-container mb-3">
-                  Update your wardrobe with our extensive range of men's clothing here at
-                  <Link to="/" className="main-link"> termia.com</Link>
-                  . Here you'll discover a stylish range of clothing,
-                  from hoodies and jumpers to jeans and jackets. Whether you're in need of some basics like t-shirts,
-                  or new clothes from our Spring collection, you'll find Read More.
-              </div>
-              <div className="pagination-container mb-3">
-                <div className="pagination-sort text-capitalize">
-                  <form action="">
-                    <label htmlFor="select-sort" className="pagination-label">
-                      sort by
-                    </label>
-                    <select name="pagination-sort-select" id="select-sort" className="pagination-select ml-1 text-capitalize">
-                      <option value="default" select="true">default</option>
-                      <option value="priceAscending" >price: low to high</option>
-                      <option value="priceDescending" >price: high to low</option>
-                      <option value="title" >A-Z</option>
-                    </select>
-                  </form>
+        <ProductConsumer>
+        {(value) => {
+          return (
+            <div className="cointainer mt-4 products-container">
+              <div className="row">
+                <FilterBar />
+                <div className="col-lg-9 col-md-8 col-sm-7 px-0 product-list">
+                  <div className="img-container mb-2">
+                    <img width="100%" height="168px" src="img/testbanner.jpg" alt="fabric"/>
+                  </div>
+                  <div className="title-container text-capitalize mb-2">
+                      <h1 className="title-text">our products</h1>
+                      <p className="title-results">{value.products.length} results</p>
+                  </div>
+                  <div className="description-container mb-3">
+                      Update your wardrobe with our extensive range of men's clothing here at
+                      <Link to="/" className="main-link"> termia.com</Link>
+                      . Here you'll discover a stylish range of clothing,
+                      from hoodies and jumpers to jeans and jackets. Whether you're in need of some basics like t-shirts,
+                      or new clothes from our Spring collection, you'll find Read More.
+                  </div>
+                  <div className="pagination-container mb-3">
+                    <div className="pagination-sort text-capitalize">
+                      <form action="">
+                        <label htmlFor="select-sort" className="pagination-label">
+                          sort by
+                        </label>
+                        <select name="pagination-sort-select" id="select-sort" className="pagination-select ml-1 text-capitalize">
+                          <option value="default" select="true">default</option>
+                          <option value="priceAscending" >price: low to high</option>
+                          <option value="priceDescending" >price: high to low</option>
+                          <option value="title" >A-Z</option>
+                        </select>
+                      </form>
+                    </div>
+                    <nav className="pagination-nav">
+                      navigation
+                    </nav>
+                  </div>
+                  <div className="row mb-2">
+                    <ProductConsumer>
+                    {value => {
+                            return value.products.map(item => {
+                              return <ProductItem key={item.id} product={item} />
+                            })
+                        }}
+                     </ProductConsumer>
+                  </div>
+                  <div className="pagination-container mb-5">
+                    <div className="pagination-sort text-capitalize">
+                      <form action="">
+                        <label htmlFor="select-sort" className="pagination-label">
+                          sort by
+                        </label>
+                        <select name="pagination-sort-select" id="select-sort" className="pagination-select ml-1 text-capitalize">
+                          <option value="default" select="true">default</option>
+                          <option value="priceAscending" >price: low to high</option>
+                          <option value="priceDescending" >price: high to low</option>
+                          <option value="title" >A-Z</option>
+                        </select>
+                      </form>
+                    </div>
+                    <nav className="pagination-nav">
+                      navigation
+                    </nav>
+                  </div>
                 </div>
-                <nav className="pagination-nav">
-                  navigation
-                </nav>
-              </div>
-              <div className="row mb-2">
-                <ProductConsumer>
-                {value => {
-                        return value.products.map(item => {
-                          return <ProductItem key={item.id} product={item} />
-                        })
-                    }}
-                 </ProductConsumer>
-              </div>
-              <div className="pagination-container mb-5">
-                <div className="pagination-sort text-capitalize">
-                  <form action="">
-                    <label htmlFor="select-sort" className="pagination-label">
-                      sort by
-                    </label>
-                    <select name="pagination-sort-select" id="select-sort" className="pagination-select ml-1 text-capitalize">
-                      <option value="default" select="true">default</option>
-                      <option value="priceAscending" >price: low to high</option>
-                      <option value="priceDescending" >price: high to low</option>
-                      <option value="title" >A-Z</option>
-                    </select>
-                  </form>
-                </div>
-                <nav className="pagination-nav">
-                  navigation
-                </nav>
               </div>
             </div>
-          </div>
-        </div>
+          )
+        }}
+
+        </ProductConsumer>
       </ProductsWrapper>
     )
   }

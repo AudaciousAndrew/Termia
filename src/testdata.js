@@ -4,7 +4,7 @@ export const testData = [
     img : "img/testproduct.jpg" ,
     name : "Barbour International Women's Polarquilt Jacket - Darker Navy" ,
     type : "electric cooker" ,
-    price : "200" ,
+    price : 200 ,
     description : "DESCdwdqwdqwdqwdqwdqwdqwdwdqwd qwdqwdqw qwdqw qw\n wdqwdqwd \n dwqdwqdqwdwqd" ,
     inCart : false ,
     count : 0 ,

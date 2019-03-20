@@ -17,10 +17,10 @@ export default function About (){
                 <div className="card-body h-100">
                   <h5 className="card-title about-card-title">our history</h5>
                   <p className="card-text about-card-text">
-                    The Hut was founded in 2004 as The Hut Group’s flagship website.
-                    We are a part of The Hut Group, which is one of Europe’s largest online retailers.
+                    Termia was founded in 2004 as Termia Group’s flagship website.
+                    We are a part of Termia Group, which is one of Europe’s largest online retailers.
                     Some of our sister websites include Myprotein, Zavvi, Coggles and Lookfantastic.
-                    At The Hut we select the finest products from the rest of our group, and use the specialist
+                    At Termia we select the finest products from the rest of our group, and use the specialist
                     knowledge from our other sites to help influence our luxury online department store.
                     Our home is in the North-West of England, and from this base we connect with our customers
                     all over the world.
@@ -34,7 +34,7 @@ export default function About (){
                 <div className="card-body">
                   <h5 className="card-title about-card-title">our brands</h5>
                   <p className="card-text about-card-text">
-                    Here at The Hut we are your one-stop online destination. We hand-pick our products
+                    Here at Termia we are your one-stop online destination. We hand-pick our products
                     to bring you the highest quality ranges each season, with hundreds of products lan
                     ding each month across fashion, homeware, health & beauty, electronics and gifts. We
                     have strong, long-standing relationships with our brands and work closely with them
@@ -97,7 +97,7 @@ export default function About (){
                   <h5 className="card-title about-card-title">contact us</h5>
                   <p className="card-text about-card-text">
                     Click here to speak to our customer services team.
-                    For all press and blogger enquiries please contact Partnerships@thehutgroup.com.
+                    For all press and blogger enquiries please contact Partnerships@termiagroup.com.
                   </p>
                 </div>
               </div>

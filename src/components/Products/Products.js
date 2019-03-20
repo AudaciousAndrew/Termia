@@ -22,7 +22,7 @@ export default class Products extends Component {
               </div>
               <div className="description-container mb-3">
                   Update your wardrobe with our extensive range of men's clothing here at
-                  <Link to="/"> termia.md</Link>
+                  <Link to="/" className="main-link"> termia.com</Link>
                   . Here you'll discover a stylish range of clothing,
                   from hoodies and jumpers to jeans and jackets. Whether you're in need of some basics like t-shirts,
                   or new clothes from our Spring collection, you'll find Read More.
@@ -81,6 +81,15 @@ export default class Products extends Component {
 }
 
 const ProductsWrapper = styled.div`
+
+.main-link{
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  text-decoration:none;
+  color:#ccc;
+  line-height:1.2;
+  font-weight:600;
+  font-size:18px;
+}
 
 .pagination-sort{
   width:40%;

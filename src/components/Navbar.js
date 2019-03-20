@@ -10,7 +10,7 @@ export default function Navbar (){
       <nav className="navbar navbar-expand-sm navbar-dark fixed-top">
         <Link to="/" className="navbar-brand text-capitalize p-0 h-100">
           <img src="img/logo3.png" alt="logo" height="40px" width="40px"/>
-          <span className="ml-3">термия</span>
+          <span className="ml-3">termia</span>
         </Link>
         <button className="navbar-toggler ml-auto" data-toggle="collapse" data-target="#navbarCollapse">
           <span className="navbar-toggler-icon"></span>

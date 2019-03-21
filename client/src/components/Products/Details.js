@@ -8,8 +8,7 @@ export default class Details extends Component {
     return(
       <ProductConsumer>
         {(value) => {
-          const { id , img , name , price , description , available , details , inCart} = value.detailProduct
-          console.log(value.detailProduct);
+          const { _id , img , name , price , description , available , details , inCart} = value.detailProduct
           return (
             <DetailsWrapper>
             <div className="container-fluid padding-container my-4">
@@ -62,7 +61,7 @@ export default class Details extends Component {
                   </div>
                   <div className="variation-buttons col-6 p-0">
                     <button className="btn variation-btn mr-0 ml-auto d-block"
-                            disabled={inCart?true:false} onClick={() => { value.addToCart(id) }}
+                            disabled={inCart?true:false} onClick={() => { value.addToCart(_id) }}
                     >
                       {inCart?"in cart" : "buy now"}
                     </button>

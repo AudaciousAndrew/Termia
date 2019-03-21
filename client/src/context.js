@@ -1,5 +1,6 @@
 import React , {Component} from 'react'
 import { testData , detailProduct } from './testdata'
+import axios from 'axios'
 
 const ProductContext = React.createContext()
 
@@ -18,17 +19,45 @@ export default class ProductProvider extends Component {
 
   setProducts = () => {
     let tempProducts = []
-    testData.forEach(item => {
-      const singleItem = { ...item }
-      tempProducts = [...tempProducts , singleItem]
+    axios.get('http://localhost:4000/api/products')
+          .then(response =>{
+             response.data.forEach(item => {
+               const singleItem = { ...item }
+               tempProducts = [...tempProducts , singleItem]
+             })
+             this.setState(() => {
+               return {products:tempProducts}
+             })
+          })
+          .catch(error => console.log(error))
+  }
+
+  confirmOrder = (order) => {
+    let message = ""
+    this.state.cart.forEach(item => {
+      message += "item name:"+item.name+"\ncount:"+item.count+"\n"
     })
-    this.setState(() => {
-      return {products:tempProducts}
-    })
+    message += "money total:"+this.state.cartTotal+"\n"
+    let tempOrder = {
+      firstname : order.firstName ,
+      lastname : order.lastName ,
+      phone : order.phone ,
+      address: order.address ,
+      order: message
+    }
+    message += "fist name:"+order.firstName+"\nlast name:"+order.lastName+"\nphone:"+order.phone+"\naddress:"+order.address
+     axios.post('http://localhost:4000/api/order' , tempOrder)
+          .then(res => console.log(res.data))
+  }
+
+  deleteProduct = (name) => {
+    const product = this.state.products.find(item => item.name === name)
+    axios.post('http://localhost:4000/api/delete' , product)
+          .then(res => console.log(res.data))
   }
 
   getItem = (id) => {
-    const product = this.state.products.find(item => item.id === id)
+    const product = this.state.products.find(item => item._id === id)
     return product
   }
 
@@ -54,7 +83,7 @@ export default class ProductProvider extends Component {
 
   increment = (id) => {
     let tempCart = [...this.state.cart]
-    const selectedProduct = tempCart.find(item => item.id === id)
+    const selectedProduct = tempCart.find(item => item._id === id)
     const index = tempCart.indexOf(selectedProduct)
     const product = tempCart[index]
     product.count = product.count + 1
@@ -70,7 +99,7 @@ export default class ProductProvider extends Component {
 
   decrement = (id) => {
     let tempCart = [...this.state.cart]
-    const selectedProduct = tempCart.find(item => item.id === id)
+    const selectedProduct = tempCart.find(item => item._id === id)
     const index = tempCart.indexOf(selectedProduct)
     const product = tempCart[index]
     product.count = product.count - 1
@@ -90,7 +119,7 @@ export default class ProductProvider extends Component {
   removeItem = (id) => {
     let tempProducts = [...this.state.products]
     let tempCart = [...this.state.cart]
-    tempCart = tempCart.filter(item => item.id !== id)
+    tempCart = tempCart.filter(item => item._id !== id)
     const index = tempProducts.indexOf(this.getItem(id))
     let removedProduct = tempProducts[index]
     removedProduct.inCart = false
@@ -121,7 +150,9 @@ export default class ProductProvider extends Component {
           handleDetail: this.handleDetail ,
           increment: this.increment ,
           decrement: this.decrement ,
-          removeItem: this.removeItem
+          removeItem: this.removeItem ,
+          deleteProduct: this.deleteProduct ,
+          confirmOrder: this.confirmOrder
       }}>
         {this.props.children}
       </ProductContext.Provider>

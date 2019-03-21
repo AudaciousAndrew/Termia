@@ -14,7 +14,6 @@ export default class Cart extends Component {
 
           {(value) => {
             const { cart } = value;
-            console.log(cart.length);
             if(cart.length > 0){
               return(
                   <div className="cart-container my-4 ">
@@ -26,7 +25,7 @@ export default class Cart extends Component {
             } else {
               return (
                 <div className="cart-container">
-                <EmptyCart />
+                  <EmptyCart />
                 </div>
               )
             }

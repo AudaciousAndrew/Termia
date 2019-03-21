@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 export default function CartItem ({item,value}){
-  const {id , name , img , price , total , count } = item
+  const { _id , name , img , price , total , count } = item
   const {increment , decrement , removeItem} = value
   return (
     <CartItemWrapper>
@@ -16,20 +16,20 @@ export default function CartItem ({item,value}){
         <div className="col-2  text-center cart-header-item">${price}</div>
         <div className="col-2  text-center cart-header-item">
           <div className="d-flex justify-content-center cart-buttons">
-            <span className="btn cart-btn" onClick={() => decrement(id)}>
+            <span className="btn cart-btn" onClick={() => decrement(_id)}>
               -
             </span>
             <span className="qty-box">
               {count}
             </span>
-            <span className="btn cart-btn" onClick={() => increment(id)}>
+            <span className="btn cart-btn" onClick={() => increment(_id)}>
               +
             </span>
           </div>
         </div>
         <div className="col-1  text-center cart-header-item cart-subtotal">${total}</div>
         <div className="col-1  text-center cart-header-item">
-          <div className="cart-remove p-1 px-2" onClick={() => removeItem(id)}>
+          <div className="cart-remove p-1 px-2" onClick={() => removeItem(_id)}>
             <i className="fas fa-times"></i>
           </div>
         </div>

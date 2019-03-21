@@ -52,7 +52,7 @@ export default class Products extends Component {
                     <ProductConsumer>
                     {value => {
                             return value.products.map(item => {
-                              return <ProductItem key={item.id} product={item} />
+                              return <ProductItem key={item._id} product={item} />
                             })
                         }}
                      </ProductConsumer>

@@ -11,7 +11,7 @@ import MainPage from './components/MainPage'
 import Delivery from './components/Delivery'
 import Details from './components/Products/Details'
 import Default from './components/Default';
-
+import Panel from './components/Panel';
 
 class App extends Component {
   render() {
@@ -25,6 +25,7 @@ class App extends Component {
           <Route path="/cart" component={Cart} />
           <Route path="/delivery" component={Delivery} />
           <Route path="/details" component={Details} />
+          <Route path="/panel" component={Panel} />
           <Route component={Default} />
         </Switch>
         <Footer />

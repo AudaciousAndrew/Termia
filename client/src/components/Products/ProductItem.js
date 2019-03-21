@@ -5,17 +5,17 @@ import { ProductConsumer } from '../../context'
 
 export default class ProductItem extends Component {
   render(){
-    const { id , name , price , img , inCart} = this.props.product
+    const { _id , name , price , img , inCart} = this.props.product
     return(
       <ProductWrapper className="col-10 col-sm-7 col-md-5 col-lg-4 pl-3 mb-3 px-0">
         <ProductConsumer>
           {(value) => (
-            <div className="card h-100" onClick={() =>  value.handleDetail(id)} >
+            <div className="card h-100" onClick={() =>  value.handleDetail(_id)} >
                 <div className="img-container p-1">
                   <Link to="/details">
                     <img src={img} alt="product" className="card-img-top"/>
                   </Link>
-                  <button className="cart-btn" disabled={inCart ? true : false} onClick={() => {value.addToCart(id)}}>
+                  <button className="cart-btn" disabled={inCart ? true : false} onClick={() => {value.addToCart(_id)}}>
                      {inCart?(<p className="text-capitalize mb-0" disabled>in cart</p>):(<i className="fas fa-cart-plus"></i>)}
                    </button>
                 </div>

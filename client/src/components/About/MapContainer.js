@@ -13,7 +13,7 @@ export default class MapContainer extends Component {
   }
 
   renderMap = () => {
-    loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyC67tbr70b-iNlTb66lmivo9bp3_Qx2Qsw&callback=initMap&language=en")
+    loadScript("https://maps.googleapis.com/maps/api/js?key=*KEY*&callback=initMap&language=en")
     window.initMap = this.initMap
   }
 
